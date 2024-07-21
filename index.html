@@ -3,51 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar PDF</title>
+    <title>Menú del Bar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
             background-color: #f0f0f0;
+            overflow: hidden; /* Evita el scroll en el cuerpo */
         }
 
         .container {
-            text-align: center;
-            width: 90%;
-            max-width: 1200px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            overflow: auto; /* Permite el scroll en el contenedor */
         }
 
-        h1 {
-            color: #333;
-        }
-
-        iframe {
+        img {
+            display: block; /* Elimina el espacio en blanco debajo de la imagen */
             width: 100%;
-            height: 80vh;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: auto;
+            max-width: 100%;
+            max-height: 100vh; /* Limita la altura máxima para evitar el overflow */
+            object-fit: contain; /* Mantiene la relación de aspecto */
         }
 
+        /* Ajustes para pantallas más grandes (monitores) */
+        @media (min-width: 1024px) {
+            img {
+                max-height: none; /* Permite que la imagen sea más alta si el monitor lo permite */
+                width: auto; /* Permite que la imagen se ajuste al ancho del monitor */
+                height: 100%; /* Ajusta la altura al 100% del contenedor */
+            }
+        }
+
+        /* Ajustes para pantallas más pequeñas */
         @media (max-width: 768px) {
-            iframe {
-                height: 60vh;
+            img {
+                max-height: none; /* Permite el scroll vertical en pantallas más pequeñas */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Menú del Bar</h1>
-        <iframe src="menu.pdf"></iframe>
+        <!-- Primera imagen del menú -->
+        <img src="pagina1.png" alt="Página 1 del menú">
+        <!-- Segunda imagen del menú -->
+        <img src="pagina2.png" alt="Página 2 del menú">
     </div>
 </body>
 </html>
